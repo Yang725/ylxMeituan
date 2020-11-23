@@ -1,27 +1,24 @@
 import ajax from './ajax'
+const BASE_URL = "/api"
 
+export const reqAddress = (geohash) => ajax(`${BASE_URL}/position/${geohash}`)
 
-export const reqAddress = (geohash) => ajax(`/position/${geohash}`)
+export const reqFoodCategorys = () => ajax(`${BASE_URL}/index_category`)
 
-export const reqFoodTypes = () => ajax(`/index_category`)
+export const reqShops = (longitude,latitude) => ajax(BASE_URL+'/shops',{longitude,latitude})
 
-export const reqShops = (latitude,longitude) => ajax(`/shops`,{latitude,longitude})
+export const reqSearchShop = (geohash,keyword) => ajax(`${BASE_URL}/search_shops`,{geohash,keyword}) 
 
-export const reqSearchShop = (geohash,keyword) => ajax(`/search_shops`,{geohash,keyword})
+export const reqPwdLogin = ({name, pwd, captcha}) => ajax(BASE_URL+'/login_pwd', {name, pwd, captcha}, 'POST')
 
-export const reqCaptcha = () => ajax(`/captcha`)
+export const reqSendCode = (phone) => ajax(`${BASE_URL}/sendcode`,{phone})
 
-export const reqPwdLogin = (name,pwd,captcha) => ajax(`/login_pwd`,{name,pwd,captcha},'POST')
+export const  reqSmsLogin = (phone,code) => ajax(`${BASE_URL}/login_sms`,{phone,code},'POST')
 
-export const reqSendCode = (phone) => ajax(`/sendcode`,{phone})
+export const reqUserInfo = () => ajax(`${BASE_URL}/userinfo`)
 
-export const reqSmsLogin = (phone,code) => ajax(`/login_sms`,{phone,code},'POST')
+export const reqLogout = () => ajax(`${BASE_URL}/logout`)
 
-export const reqUserInfo = () => ajax(`/userinfo`)
-
-export const reqLogout = () => ajax(`/logout`)
-
-export const reqShopInfo = () => ajax(`/index_category`)
 
 /**
  * 获取商家信息

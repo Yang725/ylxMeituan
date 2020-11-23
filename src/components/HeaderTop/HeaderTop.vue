@@ -22,9 +22,12 @@ export default {
   },
   components: {},
 
-  computed: {},
+  computed: {
+  },
 
-  mounted() {},
+  mounted() {
+
+  },
 
   methods: {}
 }
